@@ -1,0 +1,47 @@
+
+.red {
+  color: red;
+
+}
+
+.green {
+  color: green;
+
+}
+
+.itemlabel{
+  font-weight: bold;
+}
+
+.portfolioitem{
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid grey;
+  border-radius: 5px;
+}
+
+.periodname{
+  font-weight: bold;
+  font-size: 120%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: grey;
+  color: white;
+}
+
+.row {
+  margin: 10px;
+}
