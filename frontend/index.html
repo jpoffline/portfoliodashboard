@@ -20,7 +20,32 @@
         <div class="container">
     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     <h1>Diversified portfolio dashboard</h1>
-    <div id="main"></div>
+    <div id="additemarea">
+        <form id = "additemform">
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <label class="sr-only" for="input_periodname">Period</label>
+                    <input type="text" class="form-control" id="input_periodname" aria-describedby="emailHelp" placeholder="Period label">
+                </div>
+                <div class="col-auto">
+                    <label class="sr-only" for="input_itemlabel">Item</label>
+                    <input type="text" class="form-control" id="input_itemlabel" placeholder="Item">
+                </div>
+                <div class="col-auto">
+                    <label class="sr-only" for="input_itemvalue">Value</label>
+                    <input type="number" step = "0.01" class="form-control" id="input_itemvalue" placeholder="Value">
+                </div>
+                <div class="col-auto">
+                    <label class="sr-only" for="input_itemvposition">Position</label>
+                    <input type="number" step = "0.01" class="form-control" id="input_itemvposition" placeholder="Position" >
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary" onclick="submitNewItem()">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="dashboarditems"></div>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -35,7 +60,8 @@
 
         <script src="js/utils/icon.js"></script>
         <script src="js/utils/rgb.js"></script>
-        <script src="js/data.js"></script>
+        <script src="js/data/data.js"></script>
+        <script src="js/data/sample.js"></script>
     <script src="js/main.js"></script>
     
         </div>

@@ -1,11 +1,13 @@
 
-var main = document.getElementById("main");
-var port = renderPortfolioChanges();
-main.appendChild(port);
-addPortfolioDataToDashboard();
+renderDashboardItems()
 
-
-
+function renderDashboardItems(){
+    var main = document.getElementById("dashboarditems");
+    var port = renderPortfolioChanges();
+    main.innerHTML = ""
+    main.appendChild(port);
+    addAllPortfolioDataToDashboard();
+}
 
 
 function renderItemPosition(itemPosition){
@@ -106,10 +108,13 @@ function renderPeriod(period){
 
 function renderPeriodCol(period){
     var periodcol = document.createElement("div");
+    
     periodcol.classList.add("col");
     
+    if(periodcol.childElementCount > 0){
+        periodcol.innerHTML = ""
+    }
     periodcol.appendChild(renderPeriod(period));
-    
     return(periodcol);
 }
 
@@ -139,11 +144,42 @@ function renderPortfolioChanges(){
     return(area);
 }
 
-function addPortfolioDataToDashboard(){
+function replaceIfExists(id, data){
+    var row = document.getElementById(id)
+    
+    if(row.childElementCount > 0){
+        row.innerHTML = ""
+    }
+    row.appendChild(data);
+}
+
+function addPeriodDataToDashboard(period){
+    console.log("adding to period col: " + period.name)
+
+    replaceIfExists("period:" + period.name,renderPeriodCol(period))
+ 
+    
+}
+
+function addAllPortfolioDataToDashboard(){
     var items = loadData();
     items.periods.forEach(period =>{
-        var row = document.getElementById("period:" + period.name)
-        row.appendChild(renderPeriodCol(period));
+        addPeriodDataToDashboard(period);
     });
     
+}
+
+
+function submitNewItem(){
+    var input_periodname = document.getElementById("input_periodname").value
+    var input_itemlabel = document.getElementById("input_itemlabel").value
+    var input_itemvalue = parseFloat(document.getElementById("input_itemvalue").value)
+    var input_itemvposition = parseFloat(document.getElementById("input_itemvposition").value)
+    var p = addItem(
+        input_periodname,
+        input_itemlabel,
+        input_itemvposition,
+        input_itemvalue
+    )
+    addPeriodDataToDashboard(p)
 }
