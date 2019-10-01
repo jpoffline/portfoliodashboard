@@ -13,6 +13,10 @@ function loadData(){
     return(SAMPLEDATA)
 }
 
+function saveData(data){
+    SAMPLEDATA = data
+}
+
 function addItem(iperiod, label, position, value){
     var current = loadData();
     var is = {'label': label, 'position': position, 'value': value}
@@ -38,7 +42,7 @@ function addItem(iperiod, label, position, value){
             }
         )
     }
-    SAMPLEDATA = current
+    saveData(current)
     return(getPeriod(iperiod))
 }
 

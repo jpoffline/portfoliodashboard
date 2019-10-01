@@ -1,7 +1,23 @@
 
+body{
+  font-size: 70%
+}
+
 .red {
   color: red;
 
+}
+
+#dashboarditems{
+  background:rgb(255, 239, 219);
+  border: 2px solid rgb(255, 239, 219);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.periodtotal{
+  background: yellow;
 }
 
 .green {
@@ -18,6 +34,10 @@
   margin: 10px;
   border: 2px solid grey;
   border-radius: 5px;
+}
+
+.highlight{
+  border: 2px solid red;
 }
 
 .periodname{
