@@ -1,5 +1,7 @@
 
 renderDashboardItems()
+autocomplete(document.getElementById("input_periodname"), periodNames());
+autocomplete(document.getElementById("input_itemlabel"),  allItemNames());
 
 function renderDashboardItems(){
     var main = document.getElementById("dashboarditems");
@@ -28,7 +30,7 @@ function setupPeriodColumnAnchors(periodnames){
 
     periodnames.forEach(period =>{
         var periodcol = document.createElement("div");
-        periodcol.classList.add("col-sm-2");
+        periodcol.classList.add("col-sm-3");
         periodcol.setAttribute("id", "period:" + period);
         a.appendChild(periodcol);
     });

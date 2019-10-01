@@ -23,11 +23,13 @@
     <div id="additemarea">
         <form id = "additemform">
             <div class="form-row align-items-center">
-                <div class="col-auto">
+
+                <div class="col-auto autocomplete">
                     <label class="sr-only" for="input_periodname">Period</label>
-                    <input type="text" class="form-control" id="input_periodname" aria-describedby="emailHelp" placeholder="Period label">
+                    <input type="text" id="input_periodname" class="form-control"  placeholder="Period">
                 </div>
-                <div class="col-auto">
+                          
+                <div class="col-auto autocomplete">
                     <label class="sr-only" for="input_itemlabel">Item</label>
                     <input type="text" class="form-control" id="input_itemlabel" placeholder="Item">
                 </div>
@@ -45,6 +47,9 @@
             </div>
         </form>
     </div>
+    
+
+
     <div id="dashboarditems"></div>
 
 
@@ -60,12 +65,15 @@
 
         <script src="js/utils/icon.js"></script>
         <script src="js/utils/rgb.js"></script>
+        <script src="js/utils/autocomplete.js"></script>
         <script src="js/data/data.js"></script>
+        
         <script src="js/data/sample.js"></script>
         <script src="js/render/period.js"></script>
         <script src="js/render/tile.js"></script>
         <script src="js/action/tileclicked.js"></script>
-    <script src="js/main.js"></script>
+        <script src="js/action/periodtype.js"></script>
+        <script src="js/main.js"></script>
     
         </div>
 </body>

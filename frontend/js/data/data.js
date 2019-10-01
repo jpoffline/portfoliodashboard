@@ -9,6 +9,18 @@ function periodNames(){
     return(names)
 }
 
+function allItemNames(){
+    var data = loadData();
+    var unique = [];
+    data.periods.forEach(period =>{
+        period.items.forEach(item=>{
+            unique.push(item.label)
+        })
+    })
+    return([...new Set(unique)])
+
+}
+
 function loadData(){
     return(SAMPLEDATA)
 }
