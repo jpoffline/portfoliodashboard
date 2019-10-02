@@ -23,16 +23,21 @@ function renderPeriodCol(period){
     return(periodcol);
 }
 
+function setupPeriodColumnAnchor(periodname){
+    var periodcol = document.createElement("div");
+    periodcol.classList.add("col-sm-3");
+    periodcol.setAttribute("id", periodname);
+    return(periodcol)
+}
+
 function setupPeriodColumnAnchors(periodnames){
     var a = document.createElement("div");
     a.setAttribute("id", "periods");
     a.classList.add("row");
 
-    periodnames.forEach(period =>{
-        var periodcol = document.createElement("div");
-        periodcol.classList.add("col-sm-3");
-        periodcol.setAttribute("id", "period:" + period);
-        a.appendChild(periodcol);
+    periodnames.forEach(periodname =>{
+        
+        a.appendChild(setupPeriodColumnAnchor("period:" + periodname));
     });
 
     return(a);
@@ -40,30 +45,38 @@ function setupPeriodColumnAnchors(periodnames){
 
 function renderPortfolioChanges(){
     
-    var cols = setupPeriodColumnAnchors(periodNames());
     var area = document.createElement("div");
     area.classList.add("container");
+    area.setAttribute("id", "periodcolumns")
     
-    area.appendChild(cols);
+    area.appendChild(setupPeriodColumnAnchors(periodNames()));
     
     return(area);
 }
 
-function replaceIfExists(id, data){
-    var row = document.getElementById(id)
+function updatePeriodColumn(id, data){
+    var col = document.getElementById(id)
     
-    if(row.childElementCount > 0){
-        row.innerHTML = ""
+    if(col == null){
+        
+        var a = document.getElementById("periods")
+        a.appendChild(setupPeriodColumnAnchor(id))
+        col = document.getElementById(id)
+        
     }
-    row.appendChild(data);
+    col = document.getElementById(id)
+    
+    if(col.childElementCount > 0){
+        col.innerHTML = ""
+    }
+    col.appendChild(data);
 }
 
 function addPeriodDataToDashboard(period){
     console.log("adding to period col: " + period.name)
 
-    replaceIfExists("period:" + period.name,renderPeriodCol(period))
- 
-    
+    updatePeriodColumn("period:" + period.name, renderPeriodCol(period))
+
 }
 
 function addAllPortfolioDataToDashboard(){
