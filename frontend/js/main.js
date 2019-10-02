@@ -25,10 +25,15 @@ function renderPeriodCol(period){
 
 function setupPeriodColumnAnchor(periodname){
     var periodcol = document.createElement("div");
-    periodcol.classList.add("col-sm-3");
+    periodcol.classList.add("col-sm-2");
     periodcol.setAttribute("id", periodname);
     return(periodcol)
 }
+
+function periodcolid(periodname){
+    return("period:" + periodname)
+}
+
 
 function setupPeriodColumnAnchors(periodnames){
     var a = document.createElement("div");
@@ -37,7 +42,7 @@ function setupPeriodColumnAnchors(periodnames){
 
     periodnames.forEach(periodname =>{
         
-        a.appendChild(setupPeriodColumnAnchor("period:" + periodname));
+        a.appendChild(setupPeriodColumnAnchor(periodcolid(periodname)));
     });
 
     return(a);
@@ -75,7 +80,7 @@ function updatePeriodColumn(id, data){
 function addPeriodDataToDashboard(period){
     console.log("adding to period col: " + period.name)
 
-    updatePeriodColumn("period:" + period.name, renderPeriodCol(period))
+    updatePeriodColumn(periodcolid(period.name), renderPeriodCol(period))
 
 }
 
@@ -97,11 +102,11 @@ function submitNewItem(){
     var input_itemlabel = getValue("input_itemlabel")
     var input_itemvalue = parseFloat(getValue("input_itemvalue"))
     var input_itemvposition = parseFloat(getValue("input_itemvposition"))
-    var p = addItem(
+    var updatedPeriod = addItem(
         input_periodname,
         input_itemlabel,
         input_itemvposition,
         input_itemvalue
     )
-    addPeriodDataToDashboard(p)
+    addPeriodDataToDashboard(updatedPeriod)
 }
